@@ -1,6 +1,6 @@
 {
   "name": "time-field-polymer2",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A time field Web Component based on Polymer 2.x",
   "main": "time-field.html",
   "directories": {
