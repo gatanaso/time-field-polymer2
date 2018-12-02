@@ -1,0 +1,139 @@
+<link rel="import" href="bower_components/polymer/polymer-element.html">
+<link rel="import" href="bower_components/vaadin-text-field/vaadin-text-field.html">
+<link rel="import" href="bower_components/vaadin-button/vaadin-button.html">
+<link rel="import" href="bower_components/iron-icons/iron-icons.html">
+
+<link rel="import" href="time-field-styles.html">
+
+<dom-module id="time-field-input">
+  <template>
+    <style include="time-field-styles">
+      :host {
+        display: flex;
+        min-width: 0;
+      }
+
+      [part="time-input"] {
+        min-width: 0;
+      }
+
+      [part="decrease"],
+      [part="increase"] {
+        margin: 0;
+        padding: 0;
+        min-width: 0;
+      }
+
+      [part="decrease"]:not([disabled]),
+      [part="increase"]:not([disabled]) {
+        color: var(--time-field-controls-color, var(--time-field-controls-default-color));
+      }
+    </style>
+
+    <vaadin-text-field
+      part="time-input"
+      value="{{value}}"
+      pattern="[0-9]{0,2}"
+      on-blur="_checkValue"
+      disabled="[[disabled]]"
+      prevent-invalid-input>
+
+      <vaadin-button
+        part="decrease"
+        theme="icon tertiary"
+        slot="prefix"
+        disabled="[[disabled]]"
+        on-click="_decreaseValue">
+
+        <iron-icon icon="icons:remove"></iron-icon>
+      </vaadin-button>
+
+      <vaadin-button
+        part="increase"
+        theme="icon tertiary"
+        slot="suffix"
+        disabled="[[disabled]]"
+        on-click="_increaseValue">
+
+        <iron-icon icon="icons:add"></iron-icon>
+      </vaadin-button>
+
+    </vaadin-text-field>
+  </template>
+
+  <script>
+    {
+      /**
+        * `time-field-input`
+        *
+        * A very simple number input based on the `vaadin-text-field`.
+        */
+      class TimeFieldInput extends Polymer.Element {
+        static get is() { return "time-field-input"; }
+
+        static get properties() {
+          return {
+            value: {
+              type: String,
+              notify: true
+            },
+
+            min: {
+              type: Number,
+              value: 0
+            },
+
+            max: {
+              type: Number,
+              value: 0
+            },
+
+            disabled: {
+              type: Boolean,
+              reflectToAttribute: true
+            }
+          };
+        }
+
+        _checkValue() {
+          if (!this.value) {
+            return;
+          }
+
+          let intValue = parseInt(this.value, 10);
+
+          if (isNaN(intValue)) {
+            intValue = this.min;
+          }
+
+          if (intValue < this.min) {
+            intValue = this.min;
+          } else if (intValue > this.max) {
+            intValue = this.max;
+          }
+
+          this.value = this._zeroPadValue(intValue);
+        }
+
+        _decreaseValue() {
+          const intValue = parseInt(this.value, 10);
+          const newValue = isNaN(intValue) || intValue <= this.min ? this.max : intValue - 1;
+          this.value = this._zeroPadValue(newValue);
+        }
+
+        _increaseValue() {
+          const intValue = parseInt(this.value, 10);
+          const newValue = isNaN(intValue) || intValue >= this.max ? this.min : intValue + 1;
+          this.value = this._zeroPadValue(newValue);
+        }
+
+        _zeroPadValue(intValue) {
+          return intValue < 10 ? '0' + intValue : intValue.toString();
+        }
+
+      }
+
+      window.customElements.define(TimeFieldInput.is, TimeFieldInput);
+    }
+  </script>
+</dom-module>
