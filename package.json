@@ -1,0 +1,29 @@
+{
+  "name": "time-field-polymer2",
+  "version": "0.0.1",
+  "description": "A time field Web Component based on Polymer 2.x",
+  "main": "time-field.html",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "polymer test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatanaso/time-field-polymer2"
+  },
+  "keywords": [
+    "time-field",
+    "web-components",
+    "web-component",
+    "polymer-2",
+    "polymer"
+  ],
+  "author": "Goran",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/gatanaso/time-field-polymer2/issues"
+  },
+  "homepage": "https://github.com/gatanaso/time-field-polymer2#readme"
+}
