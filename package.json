@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "polymer test"
+    "test": "bower i && polymer test"
   },
   "repository": {
     "type": "git",
@@ -25,5 +25,9 @@
   "bugs": {
     "url": "https://github.com/gatanaso/time-field-polymer2/issues"
   },
-  "homepage": "https://github.com/gatanaso/time-field-polymer2#readme"
+  "homepage": "https://github.com/gatanaso/time-field-polymer2#readme",
+  "devDependencies": {
+    "polymer-cli": "^1.9.1",
+    "web-component-tester": "^6.9.0"
+  }
 }
