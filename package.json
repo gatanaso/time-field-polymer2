@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "bower i && polymer test"
+    "test": "bower i && wct"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
   "homepage": "https://github.com/gatanaso/time-field-polymer2#readme",
   "devDependencies": {
     "polymer-cli": "^1.9.1",
-    "web-component-tester": "^6.9.0"
+    "web-component-tester": "^6.9.0",
+    "wct-istanbul": "^0.14.3"
   }
 }
