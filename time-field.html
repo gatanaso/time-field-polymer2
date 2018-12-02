@@ -6,11 +6,10 @@
   <template>
     <style>
       * {
-      --time-field-default-color: hsla(214, 40%, 16%, 0.94);;
-      --time-field-input-default-color: var(--time-field-default-color);
-      --time-field-controls-default-color: var(--time-field-default-color);
-      --time-field-separator-default-color: var(--time-field-default-color);
-
+        --time-field-default-color: hsla(214, 40%, 16%, 0.94);
+        --time-field-input-default-color: var(--time-field-default-color);
+        --time-field-controls-default-color: var(--time-field-default-color);
+        --time-field-separator-default-color: var(--time-field-default-color);
         --time-field-disabled-default-color: hsla(214, 50%, 22%, 0.26);
       }
 
@@ -72,7 +71,9 @@
       * @demo demo/index.html
       */
       class TimeField extends Polymer.Element {
-        static get is() { return 'time-field'; }
+        static get is() {
+          return 'time-field';
+        }
 
         static get properties() {
           return {
